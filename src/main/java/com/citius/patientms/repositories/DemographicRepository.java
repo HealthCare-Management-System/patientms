@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.citius.patientms.entities.Demographic;
 import com.citius.patientms.entities.MasterAllergy;
 
-public interface DemographicRepository extends JpaRepository<Demographic, Long> {
+public interface DemographicRepository extends JpaRepository<Demographic, Integer> {
 
 }

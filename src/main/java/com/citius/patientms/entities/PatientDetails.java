@@ -20,7 +20,7 @@ public class PatientDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long patientDetails;
+	private int patientDetails;
 	@OneToOne
 	private Demographic demographic;
 //	@OneToOne
@@ -31,11 +31,13 @@ public class PatientDetails {
 	@JoinColumn(name="patient_id", nullable=true)
 	private List<Allergy> allergies =new ArrayList<Allergy>();
 
-	public long getPatientDetails() {
+
+	
+	public int getPatientDetails() {
 		return patientDetails;
 	}
 
-	public void setPatientDetails(long patientDetails) {
+	public void setPatientDetails(int patientDetails) {
 		this.patientDetails = patientDetails;
 	}
 

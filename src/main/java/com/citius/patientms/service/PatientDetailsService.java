@@ -9,18 +9,18 @@ public interface PatientDetailsService {
 
 	 PatientDetails savePatientDetails(PatientDetailsDto dto);
 
-	PatientDetailsDto getPatientDetailsByUserId(long userId);
+	PatientDetailsDto getPatientDetailsByUserId(int userId);
 
 	List<PatientDetails> getAll();
 
-	PatientDetailsDto getById(long id);
+	PatientDetailsDto getById(int id);
 
 	List<PatientDetailsDto> getAllPatientDetails();
 
-	PatientDetails getPatientDetailsById(long id);
+	PatientDetails getPatientDetailsById(int id);
 	PatientDetails savePatientDetails(PatientDetails details);
 
-	public PatientDetailsDto updatePatientDetails(long id, PatientDetailsDto detailsdto);
+	public PatientDetailsDto updatePatientDetails(int id, PatientDetailsDto detailsdto);
 	public PatientDetails convertDtoToEntity(PatientDetailsDto dto);
 	public PatientDetailsDto convertEntityToDto(PatientDetails e);
 	

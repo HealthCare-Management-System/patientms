@@ -54,7 +54,7 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 		return convertEntityToDtoList();
 	}
 	@Override
-	public PatientDetailsDto getPatientDetailsByUserId(long userId) {
+	public PatientDetailsDto getPatientDetailsByUserId(int userId) {
 		
 		List<PatientDetails> findAll = repo.findAll();
 		PatientDetailsDto dto=new PatientDetailsDto();
@@ -74,7 +74,7 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 		return repo.findAll();
 	}
 	@Override
-	public PatientDetailsDto getById(long id) {
+	public PatientDetailsDto getById(int id) {
 		return convertEntityToDto(repo.findById(id).get());
 		
 	}
@@ -118,7 +118,7 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 		
 	}
 	@Override
-	public PatientDetails getPatientDetailsById(long id) {
+	public PatientDetails getPatientDetailsById(int id) {
 		return repo.findById(id).get();
 	}
 	@Override
@@ -133,7 +133,7 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 		return repo.save(p);
 	}
 	@Override
-	public PatientDetailsDto updatePatientDetails(long id, PatientDetailsDto detailsdto) {
+	public PatientDetailsDto updatePatientDetails(int id, PatientDetailsDto detailsdto) {
 		
 		 PatientDetails details=convertDtoToEntity(detailsdto);
 		

@@ -9,9 +9,9 @@ public interface AllergyService {
 
 	public List<Allergy> saveAllAllergy(List<Allergy> allergies);
 
-	public void deleteAllergy(long id);
+	public void deleteAllergy(int id);
 
-	public void deleteAllergiesByPatientId(long id);
+	public void deleteAllergiesByPatientId(int id);
 	Allergy dtoTOEntity(AllergyDto dto);
 	AllergyDto entityToDto(Allergy a);
 	public List<Allergy> dtoTOEntityList(List<AllergyDto> ldto);

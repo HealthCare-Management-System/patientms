@@ -12,7 +12,7 @@ public class Demographic {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="demographic_id")
-	private long id;
+	private int id;
 	@Column(name = "date_of_birth")
     private String birthDate;
    
@@ -61,11 +61,14 @@ public class Demographic {
     @Column(name="have_allergies")
     private String allergyCheck;
 
-	public long getId() {
+
+
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

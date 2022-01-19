@@ -13,7 +13,7 @@ public class MasterAllergy {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "master_allergy_id")
-    private long masterallergyId;
+    private int masterallergyId;
     @Column(name = "allergy_type")
     private String allergyType;
     @Column(name = "allergy_name")
@@ -22,10 +22,13 @@ public class MasterAllergy {
     private String allergyDescription;
     @Column(name = "allergy_clinical")
     private String allergyClinicalInformation;
-	public long getMasterallergyId() {
+
+
+    
+	public int getMasterallergyId() {
 		return masterallergyId;
 	}
-	public void setMasterallergyId(long masterallergyId) {
+	public void setMasterallergyId(int masterallergyId) {
 		this.masterallergyId = masterallergyId;
 	}
 	public String getAllergyType() {

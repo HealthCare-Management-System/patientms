@@ -1,25 +1,29 @@
 package com.model;
 
-import java.util.ArrayList;
-
-import java.util.List;
-
-import com.citius.patientms.entities.Allergy;
-import com.citius.patientms.entities.MasterAllergy;
 public class AllergyDto {
 
-	private long allergyId;
+	private int allergyId;
 	   
     private MasterAllergyDto masterId;
     
     private String isAllergyFatal;
 
-	public long getAllergyId() {
+	
+
+	public int getAllergyId() {
 		return allergyId;
 	}
 
-	public void setAllergyId(long allergyId) {
+	public void setAllergyId(int allergyId) {
 		this.allergyId = allergyId;
+	}
+
+	public MasterAllergyDto getMasterId() {
+		return masterId;
+	}
+
+	public void setMasterId(MasterAllergyDto masterId) {
+		this.masterId = masterId;
 	}
 
 	public MasterAllergyDto getMaster_id() {

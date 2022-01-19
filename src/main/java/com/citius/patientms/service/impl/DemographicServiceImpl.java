@@ -24,7 +24,7 @@ public class DemographicServiceImpl implements DemographicService {
 	}
 
 	@Override
-	public Demographic updateDemographic(long id, Demographic demo) {
+	public Demographic updateDemographic(int id, Demographic demo) {
 		System.out.println(id);
 		Demographic demographic =  repo.findById(id).get();
 		demographic.setAddress(demo.getAddress());

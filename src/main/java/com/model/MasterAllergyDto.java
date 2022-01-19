@@ -4,7 +4,7 @@ import com.citius.patientms.entities.MasterAllergy;
 
 public class MasterAllergyDto {
 	
-	private long masterallergyId;
+	private int masterallergyId;
     
     private String allergyType;
    
@@ -14,11 +14,14 @@ public class MasterAllergyDto {
    
     private String allergyClinicalInformation;
 
-	public long getMasterallergyId() {
+
+
+
+	public int getMasterallergyId() {
 		return masterallergyId;
 	}
 
-	public void setMasterallergyId(long masterallergyId) {
+	public void setMasterallergyId(int masterallergyId) {
 		this.masterallergyId = masterallergyId;
 	}
 

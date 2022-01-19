@@ -49,13 +49,13 @@ public class AllergyServiceImpl implements AllergyService{
 	}
 
 	@Override
-	public void deleteAllergy(long id) {
+	public void deleteAllergy(int id) {
 		repo.deleteById(id);
 		
 	}
 
 	@Override
-	public void deleteAllergiesByPatientId(long id) {
+	public void deleteAllergiesByPatientId(int id) {
 		PatientDetails patientDetailsById = patientDetailsService.getPatientDetailsById(id);
 		PatientDetailsDto convertEntityToDto = patientDetailsService.convertEntityToDto(patientDetailsById);
 		List<Allergy> allergies = patientDetailsById.getAllergies();
