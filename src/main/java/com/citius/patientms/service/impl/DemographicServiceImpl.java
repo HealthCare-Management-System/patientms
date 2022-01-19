@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.citius.patientms.entities.Demographic;
 import com.citius.patientms.repositories.DemographicRepository;
 import com.citius.patientms.service.DemographicService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.model.DemographicDto;
 
 @Service
 public class DemographicServiceImpl implements DemographicService {
@@ -49,5 +51,48 @@ public class DemographicServiceImpl implements DemographicService {
 	public List<Demographic> getAll() {
 		// TODO Auto-generated method stub
 		return repo.findAll();
+	}
+	public Demographic dtoTOEntity(DemographicDto dto) {
+		Demographic demo=new Demographic();
+		demo.setAddress(dto.getAddress());
+		demo.setAge(dto.getAge());
+		demo.setAllergyCheck(dto.getAllergyCheck());
+		demo.setBirthDate(dto.getBirthDate());
+		demo.setEmgrAddress(dto.getEmgrAddress());
+		demo.setEmgrContactNo(dto.getEmgrContactNo());
+		demo.setEmgrEmail(dto.getEmgrEmail());
+		demo.setEmgrFname(demo.getEmgrFname());
+		demo.setEmgrLname(dto.getEmgrLname());
+		demo.setEmgrRelation(dto.getEmgrRelation());
+		demo.setEmgrTitle(dto.getEmgrTitle());
+		demo.setEthnicity(dto.getEthnicity());
+		demo.setGender(dto.getGender());
+		demo.setLangKnown(dto.getLangKnown());
+		demo.setPpp(dto.getPpp());
+		demo.setRace(dto.getRace());
+		return demo;
+	}
+
+	
+	public DemographicDto entityToDto(Demographic demo) {
+		DemographicDto dto=new DemographicDto();
+		dto.setAddress(demo.getAddress());
+		dto.setAge(demo.getAge());
+		dto.setAllergyCheck(demo.getAllergyCheck());
+		dto.setBirthDate(demo.getBirthDate());
+		dto.setEmgrAddress(demo.getEmgrAddress());
+		dto.setEmgrContactNo(demo.getEmgrContactNo());
+		dto.setEmgrEmail(demo.getEmgrEmail());
+		dto.setEmgrFname(demo.getEmgrFname());
+		dto.setEmgrLname(demo.getEmgrLname());
+		dto.setEmgrRelation(demo.getEmgrRelation());
+		dto.setEmgrTitle(demo.getEmgrTitle());
+		dto.setEthnicity(demo.getEthnicity());
+		dto.setGender(demo.getGender());
+		dto.setLangKnown(demo.getLangKnown());
+		dto.setPpp(demo.getPpp());
+		dto.setRace(demo.getRace());
+		dto.setId(demo.getId());
+		return dto;
 	}
 }

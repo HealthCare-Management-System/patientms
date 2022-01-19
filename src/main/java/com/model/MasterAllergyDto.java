@@ -1,4 +1,4 @@
-package com.citius.patientms.models;
+package com.model;
 
 import com.citius.patientms.entities.MasterAllergy;
 
@@ -54,22 +54,5 @@ public class MasterAllergyDto {
 		this.allergyClinicalInformation = allergyClinicalInformation;
 	}
     
-    MasterAllergy dtoToEntity(MasterAllergyDto dto) {
-    	MasterAllergy m=new MasterAllergy();
-    	m.setAllergyType(dto.getAllergyType());
-    	m.setAllergyName(dto.getAllergyName());
-    	m.setAllergyDescription(dto.getAllergyDescription());
-    	m.setAllergyClinicalInformation(dto.getAllergyClinicalInformation());
-    	return m;
-    }
-    
-    MasterAllergyDto entityToDto(MasterAllergy m) {
-    	MasterAllergyDto dto=new MasterAllergyDto();
-    	dto.setAllergyClinicalInformation(m.getAllergyClinicalInformation());
-    	dto.setAllergyDescription(m.getAllergyDescription());
-    	dto.setAllergyName(m.getAllergyName());
-    	dto.setAllergyType(dto.getAllergyType());
-    	dto.setMasterallergyId(m.getMasterallergyId());
-    	return dto;
-    }
+  
 }

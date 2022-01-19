@@ -12,14 +12,14 @@ import org.springframework.web.client.RestTemplate;
 import com.citius.patientms.entities.Allergy;
 import com.citius.patientms.entities.Demographic;
 import com.citius.patientms.entities.PatientDetails;
-import com.citius.patientms.models.AllergyDto;
-import com.citius.patientms.models.DemographicDto;
-import com.citius.patientms.models.PatientDetailsDto;
-import com.citius.patientms.models.UserDto;
 import com.citius.patientms.repositories.PatientDetailsRepository;
 import com.citius.patientms.service.AllergyService;
 import com.citius.patientms.service.DemographicService;
 import com.citius.patientms.service.PatientDetailsService;
+import com.model.AllergyDto;
+import com.model.DemographicDto;
+import com.model.PatientDetailsDto;
+import com.model.UserDto;
 
 
 
@@ -37,8 +37,16 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 	
 	@Override
 	public PatientDetails savePatientDetails(PatientDetailsDto dto) {
-		
-		return convertDtoToEntity(dto);
+		PatientDetails details = convertDtoToEntity(dto);
+		Demographic demographic = demographicService.saveDemographic(details.getDemographic());
+		List<Allergy> saveAllAllergy = allergyService.saveAllAllergy(details.getAllergies());
+		PatientDetails p=new PatientDetails();
+		p.setDemographic(demographic);
+		p.setEmployeeId(details.getEmployeeId());
+		p.setAllergies(saveAllAllergy);
+		repo.save(p);
+		return null;
+				
 	}
 	@Override
 	public List<PatientDetailsDto> getAllPatientDetails() {
@@ -71,24 +79,24 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 		
 	}
 	
-	PatientDetails convertDtoToEntity(PatientDetailsDto dto){
+	public PatientDetails convertDtoToEntity(PatientDetailsDto dto){
 		PatientDetails patientDetails=new PatientDetails();
 		DemographicDto demographicDto=new DemographicDto();
 		AllergyDto allergyDto=new AllergyDto();
-		Demographic demographic = demographicService.saveDemographic(demographicDto.dtoTOEntity(dto.getDemographic()));
-		List<Allergy> saveAllAllergy = allergyService.saveAllAllergy(allergyDto.dtoTOEntityList(dto.getAllergies()));
+		Demographic demographic = demographicService.dtoTOEntity(dto.getDemographic());
+		List<Allergy> saveAllAllergy = allergyService.dtoTOEntityList(dto.getAllergies());
 		patientDetails.setEmployeeId(dto.getUser().getId());
 		patientDetails.setDemographic(demographic);
 		patientDetails.setAllergies(saveAllAllergy);
-		return repo.save(patientDetails);
+		return patientDetails;
 		
 	}
-	PatientDetailsDto convertEntityToDto(PatientDetails e) {
+	public PatientDetailsDto convertEntityToDto(PatientDetails e) {
 		PatientDetailsDto patientDetails=new PatientDetailsDto();
 		DemographicDto demographicDto=new DemographicDto();
 		AllergyDto allergyDto=new AllergyDto();
-		patientDetails.setDemographic(demographicDto.entityToDto(e.getDemographic()));
-		patientDetails.setAllergies(allergyDto.entityToDtoList(e.getAllergies()));
+		patientDetails.setDemographic(demographicService.entityToDto(e.getDemographic()));
+		patientDetails.setAllergies(allergyService.entityToDtoList(e.getAllergies()));
 		patientDetails.setUser(getUserDtoFromUserMs(e.getEmployeeId()));
 		patientDetails.setId(e.getPatientDetails());
 		return patientDetails;
@@ -125,19 +133,19 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 		return repo.save(p);
 	}
 	@Override
-	public PatientDetails updatePatientDetails(long id, PatientDetails details) {
+	public PatientDetailsDto updatePatientDetails(long id, PatientDetailsDto detailsdto) {
+		
+		 PatientDetails details=convertDtoToEntity(detailsdto);
 		
 		AllergyDto allergyDto=new AllergyDto();
 		DemographicDto demographicDto=new DemographicDto();
 		PatientDetails oldEntry = repo.findById(id).get();
-		
 		List<Allergy> saveAllAllergy = allergyService.saveAllAllergy(details.getAllergies());
-
 		Demographic updateDemographic = demographicService.updateDemographic(oldEntry.getDemographic().getId(),details.getDemographic());
 		oldEntry.setDemographic(updateDemographic);
 		oldEntry.setEmployeeId(details.getEmployeeId());
 		oldEntry.setAllergies(saveAllAllergy);
-		return repo.save(oldEntry);
+		return convertEntityToDto(repo.save(oldEntry));
 //		return null;
 		
 	}

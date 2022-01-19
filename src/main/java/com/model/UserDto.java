@@ -1,4 +1,4 @@
-package com.citius.patientms.models;
+package com.model;
 
 public class UserDto {
 

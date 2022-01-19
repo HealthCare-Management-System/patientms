@@ -3,7 +3,7 @@ package com.citius.patientms.service;
 import java.util.List;
 
 import com.citius.patientms.entities.PatientDetails;
-import com.citius.patientms.models.PatientDetailsDto;
+import com.model.PatientDetailsDto;
 
 public interface PatientDetailsService {
 
@@ -20,5 +20,8 @@ public interface PatientDetailsService {
 	PatientDetails getPatientDetailsById(long id);
 	PatientDetails savePatientDetails(PatientDetails details);
 
-	PatientDetails updatePatientDetails(long id, PatientDetails dto);
+	public PatientDetailsDto updatePatientDetails(long id, PatientDetailsDto detailsdto);
+	public PatientDetails convertDtoToEntity(PatientDetailsDto dto);
+	public PatientDetailsDto convertEntityToDto(PatientDetails e);
+	
 }

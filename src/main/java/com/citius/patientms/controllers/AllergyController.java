@@ -22,6 +22,8 @@ public class AllergyController {
 		allergyService.deleteAllergy(id);
 		
 	}
+	
+	
 	@DeleteMapping("/allergies/{id}")
 	@CrossOrigin
 	public void deleteAllergiesByPatientId(@PathVariable long id) {

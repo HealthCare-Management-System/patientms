@@ -3,6 +3,7 @@ package com.citius.patientms.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,11 +21,13 @@ public class DemographicController {
 	private DemographicService service;
 
 	@PatchMapping("/{id}")
+	@CrossOrigin
 	public Demographic updateDemographic(@PathVariable long id,@RequestBody Demographic demo) {
 		return service.updateDemographic(id, demo);
 	}
 	
 	@GetMapping
+	@CrossOrigin
 	public List<Demographic> fetchAllDemographic(){
 	return service.getAll();
 	}

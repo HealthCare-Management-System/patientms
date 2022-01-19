@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.citius.patientms.entities.PatientDetails;
-import com.citius.patientms.models.PatientDetailsDto;
 import com.citius.patientms.service.PatientDetailsService;
+import com.model.PatientDetailsDto;
 
 
 
@@ -29,6 +29,7 @@ public class PatientDetailsController {
 		return "Working";
 	}
 	@PostMapping
+	@CrossOrigin
 	public void savePatientDetails(@RequestBody PatientDetailsDto dto) {
 	service.savePatientDetails(dto);	
 	}
@@ -48,18 +49,20 @@ public class PatientDetailsController {
 //	}
 	
 	@GetMapping("/{id}")
+	@CrossOrigin
 	public PatientDetailsDto getById(@PathVariable long id) {
 		return service.getById(id);
 	}
 	
 	@GetMapping("/allPatientDetails")
+	@CrossOrigin
 	private List<PatientDetailsDto> getAllPatientDetails(){
 		
 		return service.getAllPatientDetails();
 	}
 	@PatchMapping("/update/{id}")
 	@CrossOrigin
-	public PatientDetails updatePatientDetails(@PathVariable long id,@RequestBody PatientDetails dto) {
+	public PatientDetailsDto updatePatientDetails(@PathVariable long id,@RequestBody PatientDetailsDto dto) {
 		System.out.println("from frontend");
 		System.out.println(dto.getAllergies());
 		System.out.println(dto);

@@ -3,6 +3,7 @@ package com.citius.patientms.service;
 import java.util.List;
 
 import com.citius.patientms.entities.Demographic;
+import com.model.DemographicDto;
 
 public interface DemographicService {
 
@@ -11,5 +12,7 @@ public interface DemographicService {
 	Demographic updateDemographic(long id, Demographic demographic);
 
 	List<Demographic> getAll();
+	public Demographic dtoTOEntity(DemographicDto dto);
+	public DemographicDto entityToDto(Demographic demo);
 
 }

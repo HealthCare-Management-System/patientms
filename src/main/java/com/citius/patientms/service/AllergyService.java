@@ -3,6 +3,7 @@ package com.citius.patientms.service;
 import java.util.List;
 
 import com.citius.patientms.entities.Allergy;
+import com.model.AllergyDto;
 
 public interface AllergyService {
 
@@ -11,4 +12,9 @@ public interface AllergyService {
 	public void deleteAllergy(long id);
 
 	public void deleteAllergiesByPatientId(long id);
+	Allergy dtoTOEntity(AllergyDto dto);
+	AllergyDto entityToDto(Allergy a);
+	public List<Allergy> dtoTOEntityList(List<AllergyDto> ldto);
+	public List<AllergyDto> entityToDtoList(List<Allergy> entity);
+	
 }

@@ -16,7 +16,7 @@ public class Allergy {
     private long allergyId;
    
     @OneToOne
-    private MasterAllergy master_id;
+    private MasterAllergy masterId;
     
     private String isAllergyFatal;
 	public long getAllergyId() {
@@ -27,10 +27,10 @@ public class Allergy {
 	}
 	
 	public MasterAllergy getMaster_id() {
-		return master_id;
+		return masterId;
 	}
 	public void setMaster_id(MasterAllergy master_id) {
-		this.master_id = master_id;
+		this.masterId = master_id;
 	}
 	public String getIsAllergyFatal() {
 		return isAllergyFatal;
