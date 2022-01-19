@@ -1,13 +1,8 @@
 package com.model;
 
-import javax.persistence.Column;
-
-import com.citius.patientms.entities.Demographic;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class DemographicDto {
 
-	private long id;
+	private int id;
 
 	private String birthDate;
 
@@ -41,11 +36,11 @@ public class DemographicDto {
 
 	private String allergyCheck;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -176,6 +171,5 @@ public class DemographicDto {
 	public void setAllergyCheck(String allergyCheck) {
 		this.allergyCheck = allergyCheck;
 	}
-	
-	
+
 }

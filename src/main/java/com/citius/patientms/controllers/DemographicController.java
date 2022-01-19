@@ -23,7 +23,7 @@ public class DemographicController {
 
 	@PatchMapping("/{id}")
 	@CrossOrigin
-	public Demographic updateDemographic(@PathVariable long id,@RequestBody Demographic demo) {
+	public Demographic updateDemographic(@PathVariable int id,@RequestBody Demographic demo) {
 		return service.updateDemographic(id, demo);
 	}
 	

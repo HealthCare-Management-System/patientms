@@ -17,7 +17,7 @@ public class AllergyController {
 	private AllergyService allergyService;
 	@DeleteMapping("/{id}")
 	@CrossOrigin
-	public void  deleteById(@PathVariable long id) {
+	public void  deleteById(@PathVariable int id) {
 //		System.out.println(id);
 		allergyService.deleteAllergy(id);
 		
@@ -26,7 +26,7 @@ public class AllergyController {
 	
 	@DeleteMapping("/allergies/{id}")
 	@CrossOrigin
-	public void deleteAllergiesByPatientId(@PathVariable long id) {
+	public void deleteAllergiesByPatientId(@PathVariable int id) {
 		allergyService.deleteAllergiesByPatientId(id);
 	}
 

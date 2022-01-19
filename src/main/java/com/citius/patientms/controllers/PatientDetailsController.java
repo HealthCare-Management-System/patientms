@@ -35,7 +35,7 @@ public class PatientDetailsController {
 	}
 	@GetMapping("/user/{userId}")
 	@CrossOrigin
-	private PatientDetailsDto getPatientDetailsByUserId(@PathVariable long userId) {
+	private PatientDetailsDto getPatientDetailsByUserId(@PathVariable int userId) {
 		//return service.getPatientDetailsById(user);
 		System.out.println(userId);
 	 return service.getPatientDetailsByUserId(userId);
@@ -50,7 +50,7 @@ public class PatientDetailsController {
 	
 	@GetMapping("/{id}")
 	@CrossOrigin
-	public PatientDetailsDto getById(@PathVariable long id) {
+	public PatientDetailsDto getById(@PathVariable int id) {
 		return service.getById(id);
 	}
 	
@@ -62,7 +62,7 @@ public class PatientDetailsController {
 	}
 	@PatchMapping("/update/{id}")
 	@CrossOrigin
-	public PatientDetailsDto updatePatientDetails(@PathVariable long id,@RequestBody PatientDetailsDto dto) {
+	public PatientDetailsDto updatePatientDetails(@PathVariable int id,@RequestBody PatientDetailsDto dto) {
 		System.out.println("from frontend");
 		System.out.println(dto.getAllergies());
 		System.out.println(dto);

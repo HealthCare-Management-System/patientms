@@ -8,9 +8,7 @@ import com.model.DemographicDto;
 public interface DemographicService {
 
 	Demographic saveDemographic(Demographic demo);
-
-	Demographic updateDemographic(long id, Demographic demo);
-
+	Demographic updateDemographic(int id, Demographic demographic);
 	List<Demographic> getAll();
 	public Demographic dtoTOEntity(DemographicDto dto);
 	public DemographicDto entityToDto(Demographic demo);
