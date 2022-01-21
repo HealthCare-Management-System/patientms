@@ -26,13 +26,9 @@ public class AllergyDto {
 		this.masterId = masterId;
 	}
 
-	public MasterAllergyDto getMaster_id() {
-		return masterId;
-	}
+	
 
-	public void setMaster_id(MasterAllergyDto master_id) {
-		this.masterId = master_id;
-	}
+	
 
 	public String getIsAllergyFatal() {
 		return isAllergyFatal;
