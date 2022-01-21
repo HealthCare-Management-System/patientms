@@ -23,5 +23,7 @@ public interface PatientDetailsService {
 	public PatientDetailsDto updatePatientDetails(int id, PatientDetailsDto detailsdto);
 	public PatientDetails convertDtoToEntity(PatientDetailsDto dto);
 	public PatientDetailsDto convertEntityToDto(PatientDetails e);
+
+	void updatePatientDetailswithEntity(int id, PatientDetails patientDetailsById);
 	
 }

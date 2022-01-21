@@ -1,6 +1,7 @@
 package com.citius.patientms.service.impl;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,11 @@ import com.citius.patientms.entities.Allergy;
 import com.citius.patientms.entities.MasterAllergy;
 import com.citius.patientms.entities.PatientDetails;
 import com.citius.patientms.repositories.AllergyRepository;
+import com.citius.patientms.repositories.MasterAllergyRepository;
 import com.citius.patientms.service.AllergyService;
 import com.citius.patientms.service.MasterAllergyService;
 import com.citius.patientms.service.PatientDetailsService;
 import com.model.AllergyDto;
-import com.model.MasterAllergyDto;
 import com.model.PatientDetailsDto;
 
 @Service
@@ -22,30 +23,33 @@ public class AllergyServiceImpl implements AllergyService{
 	@Autowired
 	private AllergyRepository repo;
 	@Autowired
+	private MasterAllergyRepository masterRepo;
+	@Autowired
 	private PatientDetailsService patientDetailsService;
 	@Autowired
 	private MasterAllergyService masterAllergyService;
 
 	@Override
 	public List<Allergy> saveAllAllergy(List<Allergy> allergies) {
-		List<MasterAllergy> m=new ArrayList<>();
-		for(Allergy a:allergies) {
-			m.add(a.getMaster_id());
-		}
-		masterAllergyService.saveAllMasterAllergy(m);
-		List<Allergy> allergies1=new ArrayList<>();
-		int i=0;
+		
+		List<Allergy> allergies1=new ArrayList<>();		
 		for(Allergy a1:allergies) {
-			Allergy n=new Allergy();
-			n.setAllergyId(a1.getAllergyId());
-			n.setIsAllergyFatal(a1.getIsAllergyFatal());
-			n.setMaster_id(m.get(i));
-			allergies1.add(n);
-			i=i+1;
+			Allergy a=new Allergy();
+			List<MasterAllergy> listOfAllergies= masterRepo.findByAllergyDescriptionAndAllergyClinicalInformationAndAllergyNameAndAllergyType(a1.getMasterId().getAllergyDescription(),a1.getMasterId().getAllergyClinicalInformation(),a1.getMasterId().getAllergyName(),a1.getMasterId().getAllergyType());
+			if(listOfAllergies.size()!=0) {
+				System.out.println(" object is present");
+				a.setMasterId(listOfAllergies.get(0));
+			}else {
+				MasterAllergy saveMasterAllergy = masterAllergyService.saveMasterAllergy(a1.getMasterId());
+				a.setMasterId(saveMasterAllergy);
+				
+			}
+			a.setIsAllergyFatal(a1.getIsAllergyFatal());
+			allergies1.add(a);
 		}
-//		masterAllergyService.saveAllMasterAllergy(m);
 
 		return repo.saveAll(allergies1);
+		
 	}
 
 	@Override
@@ -65,7 +69,7 @@ public class AllergyServiceImpl implements AllergyService{
 		System.out.println(patientDetailsById.getEmployeeId());
 		patientDetailsById.setAllergies(allergies);
 		//patientDetailsService.savePatientDetails(patientDetailsById);
-		patientDetailsService.updatePatientDetails(id, convertEntityToDto);
+		patientDetailsService.updatePatientDetailswithEntity(id, patientDetailsById);
 		System.out.println(id);
 		
 	}
@@ -73,7 +77,7 @@ public class AllergyServiceImpl implements AllergyService{
 	public Allergy dtoTOEntity(AllergyDto dto) {
 		Allergy a=new Allergy();
 		a.setIsAllergyFatal(dto.getIsAllergyFatal());
-		a.setMaster_id(masterAllergyService.dtoToEntity(dto.getMaster_id()));
+		a.setMasterId(masterAllergyService.dtoToEntity(dto.getMasterId()));
 		return a;
 	}
 	
@@ -82,7 +86,8 @@ public class AllergyServiceImpl implements AllergyService{
 		AllergyDto dto=new AllergyDto();
 		dto.setAllergyId(a.getAllergyId());
 		dto.setIsAllergyFatal(a.getIsAllergyFatal());
-		dto.setMaster_id(masterAllergyService.entityToDto(a.getMaster_id()));
+		dto.setMasterId(masterAllergyService.entityToDto(a.getMasterId()));
+//		dto.setAllergyId(a.getAllergyId());
 		return dto;
 	}
 	

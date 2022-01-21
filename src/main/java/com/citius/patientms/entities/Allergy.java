@@ -35,12 +35,12 @@ public class Allergy {
 	public void setMasterId(MasterAllergy masterId) {
 		this.masterId = masterId;
 	}
-	public MasterAllergy getMaster_id() {
-		return masterId;
-	}
-	public void setMaster_id(MasterAllergy master_id) {
-		this.masterId = master_id;
-	}
+//	public MasterAllergy getMaster_id() {
+//		return masterId;
+//	}
+//	public void setMaster_id(MasterAllergy master_id) {
+//		this.masterId = master_id;
+//	}
 	public String getIsAllergyFatal() {
 		return isAllergyFatal;
 	}
