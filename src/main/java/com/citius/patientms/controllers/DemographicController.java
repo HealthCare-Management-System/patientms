@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.citius.patientms.entities.Demographic;
 import com.citius.patientms.service.DemographicService;
+import com.model.DemographicDto;
 
 @RestController
 @RequestMapping("/demographics")

@@ -61,7 +61,7 @@ public class DemographicServiceImpl implements DemographicService {
 		demo.setEmgrAddress(dto.getEmgrAddress());
 		demo.setEmgrContactNo(dto.getEmgrContactNo());
 		demo.setEmgrEmail(dto.getEmgrEmail());
-		demo.setEmgrFname(demo.getEmgrFname());
+		demo.setEmgrFname(dto.getEmgrFname());
 		demo.setEmgrLname(dto.getEmgrLname());
 		demo.setEmgrRelation(dto.getEmgrRelation());
 		demo.setEmgrTitle(dto.getEmgrTitle());

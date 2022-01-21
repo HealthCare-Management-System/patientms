@@ -38,14 +38,16 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 	@Override
 	public PatientDetails savePatientDetails(PatientDetailsDto dto) {
 		PatientDetails details = convertDtoToEntity(dto);
+		System.out.println(details.getAllergies().get(0).getIsAllergyFatal());
+		
 		Demographic demographic = demographicService.saveDemographic(details.getDemographic());
 		List<Allergy> saveAllAllergy = allergyService.saveAllAllergy(details.getAllergies());
 		PatientDetails p=new PatientDetails();
 		p.setDemographic(demographic);
 		p.setEmployeeId(details.getEmployeeId());
 		p.setAllergies(saveAllAllergy);
-		repo.save(p);
-		return null;
+		 return repo.save(p);
+		//return null;
 				
 	}
 	@Override
@@ -55,16 +57,17 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 	}
 	@Override
 	public PatientDetailsDto getPatientDetailsByUserId(int userId) {
-		
 		List<PatientDetails> findAll = repo.findAll();
 		PatientDetailsDto dto=new PatientDetailsDto();
 		System.out.println("from service"+userId);
 		for(PatientDetails p:findAll) {
 			if(p.getEmployeeId()==userId) {
+				System.out.println(p.getAllergies().size());
 				return convertEntityToDto(p);
 				
 			}
 		}
+		
 		return null;
 		
 	}
@@ -93,8 +96,8 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 	}
 	public PatientDetailsDto convertEntityToDto(PatientDetails e) {
 		PatientDetailsDto patientDetails=new PatientDetailsDto();
-		DemographicDto demographicDto=new DemographicDto();
-		AllergyDto allergyDto=new AllergyDto();
+//		DemographicDto demographicDto=new DemographicDto();
+//		AllergyDto allergyDto=new AllergyDto();
 		patientDetails.setDemographic(demographicService.entityToDto(e.getDemographic()));
 		patientDetails.setAllergies(allergyService.entityToDtoList(e.getAllergies()));
 		patientDetails.setUser(getUserDtoFromUserMs(e.getEmployeeId()));
@@ -147,6 +150,11 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 		oldEntry.setAllergies(saveAllAllergy);
 		return convertEntityToDto(repo.save(oldEntry));
 //		return null;
+		
+	}
+	@Override
+	public void updatePatientDetailswithEntity(int id, PatientDetails patientDetailsById) {
+		// TODO Auto-generated method stub
 		
 	}
 	

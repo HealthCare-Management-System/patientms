@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class MasterAllergy {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "master_allergy_id")
     private int masterallergyId;
     @Column(name = "allergy_type")
@@ -23,8 +23,6 @@ public class MasterAllergy {
     @Column(name = "allergy_clinical")
     private String allergyClinicalInformation;
 
-
-    
 	public int getMasterallergyId() {
 		return masterallergyId;
 	}

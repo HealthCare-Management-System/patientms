@@ -10,4 +10,6 @@ public interface MasterAllergyService {
 	List<MasterAllergy> saveAllMasterAllergy(List<MasterAllergy> allergies);
 	  MasterAllergy dtoToEntity(MasterAllergyDto dto);
 MasterAllergyDto entityToDto(MasterAllergy m);
+List<MasterAllergy> getAllergies();
+MasterAllergy saveMasterAllergy(MasterAllergy master);
 }
