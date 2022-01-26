@@ -31,7 +31,7 @@ public class PatientDetailsController {
 	@PostMapping
 	@CrossOrigin
 	public void savePatientDetails(@RequestBody PatientDetailsDto dto) {
-		System.out.println(dto.getAllergies().get(0));
+	//	System.out.println(dto.getAllergies().get(0));
 	service.savePatientDetails(dto);	
 	}
 	@GetMapping("/user/{userId}")

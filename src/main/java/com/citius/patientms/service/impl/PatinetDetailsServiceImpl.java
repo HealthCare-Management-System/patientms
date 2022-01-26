@@ -38,7 +38,7 @@ public class PatinetDetailsServiceImpl implements PatientDetailsService{
 	@Override
 	public PatientDetails savePatientDetails(PatientDetailsDto dto) {
 		PatientDetails details = convertDtoToEntity(dto);
-		System.out.println(details.getAllergies().get(0).getIsAllergyFatal());
+//		System.out.println(details.getAllergies().get(0).getIsAllergyFatal());
 		
 		Demographic demographic = demographicService.saveDemographic(details.getDemographic());
 		List<Allergy> saveAllAllergy = allergyService.saveAllAllergy(details.getAllergies());
