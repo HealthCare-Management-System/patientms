@@ -17,7 +17,7 @@ public interface MasterAllergyRepository extends JpaRepository<MasterAllergy, In
 	
 
     List<MasterAllergy> findByAllergyDescriptionAndAllergyClinicalInformationAndAllergyNameAndAllergyType(String allergyDescrption,String allergyClinicalInformation,String allergyName,String allergyType);
-    @Query(value = "SELECT max(masterallergyId) FROM MasterAllergy")
+    @Query(value = "SELECT coalesce(max(masterallergyId),0) FROM MasterAllergy")
 	int getMaxTransactionId();
 //    @Query(value = "SELECT coalesce(max(id), 0) FROM Medication")
 //	int getMaxTransactionId();
