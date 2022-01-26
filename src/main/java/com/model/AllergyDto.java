@@ -26,7 +26,7 @@ public class AllergyDto {
 		this.masterId = masterId;
 	}
 
-	
+
 	public String getIsAllergyFatal() {
 		return isAllergyFatal;
 	}
